@@ -38,10 +38,8 @@ https://templatemo.com/tm-464-ultra-profile
 			<nav class="collapse navbar-collapse" id="rock-navigation">
 				<ul class="nav navbar-nav navbar-right main-navigation text-uppercase">
 					<li><a href="#home" class="smoothScroll">Asosiy</a></li>
-					<li><a href="#work" class="smoothScroll">Ishlarim</a></li>
+					<li><a href="#work" class="smoothScroll">Xizmatlar</a></li>
 					<li><a href="#portfolio" class="smoothScroll">Portfolio</a></li>
-					<li><a href="#resume" class="smoothScroll">Rezyume</a></li>
-					<li><a href="#about" class="smoothScroll">Biz haqimizda</a></li>
 					<li><a href="#contact" class="smoothScroll">Aloqa</a></li>
 				</ul>
 			</nav>
