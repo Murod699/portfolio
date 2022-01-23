@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/admin', function(){
-    return view('admin.index');
-
+// Admin routes
+Route::prefix('admin')->group(function(){
+    Route::resource('/ports', 'App\Http\Controllers\Admin\PortController');
 });
+
+
