@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Port;
 
+use Image;
+
 class PortController extends Controller
 {
     /**
@@ -29,7 +31,7 @@ class PortController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.ports.create');
     }
 
     /**
@@ -40,7 +42,38 @@ class PortController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation rules
+        $request->validate([
+            'name' => 'required|min:3',
+            'ssilka' => 'required|min:3',
+            'img' => 'required|file|mimes:jpg,png,jpeg'
+        ]);
+
+        //Upload image to storage
+
+        $img_name = $request->file('img')->store('ports', ['disk' => 'public']);
+
+        //Create thumbnail
+
+        $full_path = storage_path('app/public/'.$img_name);
+        $full_thumb_path = storage_path('app/public/thumbs/'.$img_name);
+        $thumb = Image::make($full_path);
+        //proporsiya qilib qirqish
+        // $thumb->resize(300, 300)->save($full_thumb_path);
+
+        //Kvadrat qilib qirqish
+        $thumb->fit(300,300, function($constraint){
+             $constraint->aspectRatio();
+        })->save($full_thumb_path);
+
+        //Bazaga yozish
+        Port::create([
+            'img' => $img_name,
+            'name' => $request->post('name'),
+            'ssilka' => $request->post('ssilka')
+        ]);
+
+        return redirect()->route('ports.index')->with('success', 'Yangi dastur qo`shildi!');
     }
 
     /**
@@ -85,6 +118,10 @@ class PortController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $model = Port::findOrFail($id);
+
+        $model->delete();
+
+        return redirect()->route('ports.index');
     }
 }
