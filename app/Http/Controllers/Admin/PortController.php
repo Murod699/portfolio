@@ -19,7 +19,11 @@ class PortController extends Controller
      */
     public function index()
     {
-        $ports = Port::all();
+        $ports = Port::latest()->paginate(3);
+
+        
+
+        
 
         return view('admin.ports.index', compact('ports'));
     }
@@ -70,7 +74,8 @@ class PortController extends Controller
         Port::create([
             'img' => $img_name,
             'name' => $request->post('name'),
-            'ssilka' => $request->post('ssilka')
+            'ssilka' => $request->post('ssilka'),
+            'thumb' => 'thumbs/'.$img_name
         ]);
 
         return redirect()->route('ports.index')->with('success', 'Yangi dastur qo`shildi!');
@@ -122,6 +127,6 @@ class PortController extends Controller
 
         $model->delete();
 
-        return redirect()->route('ports.index');
+        return redirect()->route('ports.index')->with('delete', 'Dastur o`chirildi!');
     }
 }

@@ -11,6 +11,7 @@ class Port extends Model
     public $table = 'portfolio';
     public $fillable = [
         'img',
+        'thumb',
         'name',
         'ssilka'
     ];
