@@ -11,21 +11,23 @@
                             </h6>
                         </div>
                         <div class="card-body">
+                            @include('admin.alerts.main')
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Rasmi</th>
+                                            <th width="100px">Rasmi</th>
                                             <th>Nomi</th>
                                             <th>e-manzil</th>
-                                            <th>Amallar</th>
+                                            <th width="280px">Amallar</th>
                                             
                                         </tr>
                                     </thead>                                
                                     <tbody>
                                         @foreach($ports as $port)
                                         <tr>
-                                            <td>{{$port->img}}</td>
+                                            <td>
+                                                <img class="img img-thubnail" width="50px" src="{{'/storage/'.$port->thumb}}" alt="{{$port->name}}"></td>
                                             <td>{{$port->name}}</td>
                                             <td>{{$port->ssilka}}</td>
                                             <td>
