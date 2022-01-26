@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'App\Http\Controllers\SiteController@index')->name('index');
+
+Route::post('/', 'App\Http\Controllers\SiteController@feedbackStore')->name('contact.store');
+
 // Admin routes
 Route::prefix('admin')->group(function(){
     Route::resource('/ports', 'App\Http\Controllers\Admin\PortController');
