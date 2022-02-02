@@ -100,7 +100,9 @@ class PortController extends Controller
      */
     public function edit($id)
     {
-        //
+        $port = Port::findOrFail($id);
+
+        return view('admin.ports.edit', compact('port'));
     }
 
     /**
@@ -112,7 +114,50 @@ class PortController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $port = Port::findOrfail($id);
+
+        $request -> validate([
+            'name' =>'required',
+            'ssilka' =>'required',
+
+        ]);
+
+        if($request->file('img')){
+            //delete old file
+            Storage::disk('public')->delete([
+                $port->img,
+                $port->thumb
+            ]);
+
+            //Upload image to storage
+
+            $img_name = $request->file('img')->store('ports', ['disk' => 'public']);
+
+            //Create thumbnail
+
+            $full_path = storage_path('app/public/'.$img_name);
+            $full_thumb_path = storage_path('app/public/thumbs/'.$img_name);
+            $thumb = Image::make($full_path);
+            //proporsiya qilib qirqish
+            // $thumb->resize(300, 300)->save($full_thumb_path);
+
+            //Kvadrat qilib qirqish
+            $thumb->fit(300,300, function($constraint){
+                $constraint->aspectRatio();
+            })->save($full_thumb_path);
+        }
+        else{
+            $img_name = $port->img;
+            $thumb = $port->thumb;
+        }
+        $port->update([
+            'name' => $request->post('name'),
+            'ssilka' => $request->post('ssilka'),
+            'img' => $img_name,
+            'thumb' => $thumb
+
+        ]);
+        return redirect()->route('ports.index')->with('success', 'Dastur ma`lumotlari o`zgartirildi!');
     }
 
     /**
