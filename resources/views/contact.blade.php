@@ -28,10 +28,12 @@
 							<input class="form-control" type="text" value="{{ @old('name')}}" name="name" placeholder="Isminggiz">
 						</div>
 						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="email" value="{{ @old('email')}}" name="email" placeholder="email pochtangiz">
+							<div class="input-group">
+								<div class="input-group-addon">+998</div>
+								<input type="text" class="form-control" id="exampleInputAmount" value="{{ @old('phone')}}" name="phone" placeholder="Telefon raqaminggiz! Misol:901234567">
+							</div>
 						</div>
 						<div class="col-md-12 col-sm-12">
-							<input class="form-control" type="text" value="{{ @old('subject')}}" name="subject" placeholder="Mavzu">
 							<textarea class="form-control" value="{{ @old('message')}}" name="message" placeholder="Xabaringgiz" rows="6"></textarea>
 						</div>
 						<div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">

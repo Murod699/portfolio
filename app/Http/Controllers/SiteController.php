@@ -18,15 +18,13 @@ class SiteController extends Controller
 
         $request -> validate([
             'name' => 'required|min:3',
-            'email' => 'required|email',
-            'subject' => 'required|min:6|max:128',
+            'phone' => 'required|min:9|max:9',
             'message' => 'required|max:2048'
         ]);
 
         Feedback::create([
             'name' => $request->post('name'),
-            'email' => $request->post('email'),
-            'subject' => $request->post('subject'),
+            'phone' => $request->post('phone'),
             'message' => $request->post('message')
         ]);
 

@@ -13,8 +13,7 @@ class Feedback extends Model
     
     public $fillable = [
         'name',
-        'email',
-        'subject',
+        'phone',
         'message'
     ];
 }
