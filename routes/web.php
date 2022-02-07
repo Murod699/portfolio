@@ -20,6 +20,10 @@ Route::post('/', 'App\Http\Controllers\SiteController@feedbackStore')->name('con
 // Admin routes
 Route::prefix('admin')->group(function(){
     Route::resource('/ports', 'App\Http\Controllers\Admin\PortController');
+//Feedback routes
+    Route::get('feedbacks', 'App\Http\Controllers\Admin\FeedbacksController@index')->name('feedbacks.index');
+    Route::get('feedbacks/{id}/show', 'App\Http\Controllers\Admin\FeedbacksController@show')->name('feedbacks.show');
+
 });
 
 
