@@ -28,12 +28,21 @@
                         <td>{{$item->created_at->format('H:i, d/m/Y')}}</td>
                         <td><i class="fa fa-{{$item->status ? 'envelope-open' : 'envelope'}}"></i></td>
                         <td>
-                            <a class="btn btn-primary" href="{{route('feedbacks.show', $item->id)}}"><i class="fa fa-eye"></i> ko`rish</a>
-                            <form method="POST" action="{{route('feedbacks.destroy', $item->id)}}">
-                                @csrf
-                                @method('Delete')
-                                <button class="btn btn-danger"><i class="fa fa-trash"></i> O`chirish</button>
-                            </form>
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <a href="{{route('feedbacks.show', $item->id)}}" class="btn btn-primary">
+                                <i class="fa fa-eye"></i>Ko'rish</a>
+                               <div class="btn-group" role="group">
+                                   <button id="btnGroupDrop1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   </button>
+                                   <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                       <form method="POST" action="{{route('feedbacks.destroy', $item->id)}}">
+                                           @csrf
+                                           @method('Delete')
+                                           <button class="dropdown-item" type="submit"><i class="fa fa-trash"></i>O`chirish</button>
+                                       </form>
+                                   </div>
+                               </div>
+                            </div>
                         </td>
                         
                     </tr>

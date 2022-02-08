@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{$title}}</title>
+    <title>{{env('APP_NAME', 'Sayt')}} - Boshqaruv paneli</title>
 
     <!-- Custom fonts for this template-->
     <link href="/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,18 +34,31 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('ports.index')}}">
+                <div class="sidebar-brand-icon">
+                    <i class="fa fa-home">
+
+                    </i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Ultra Soft <span>asosiy</span> </div>
+                <div class="sidebar-brand-text mx-3">{{env('APP_NAME', 'Sayt')}}</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <!-- Heading -->
+
+            <div class="sidebar-heading">
+                Barcha bo'limlar
+            </div>
+
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item {{request()->path()=='admin/ports' ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('ports.index')}}">
+                    <i class="fa fa-cogs"></i>
+                    <span>Dasturlar</span></a>
+            </li>
+            <li class="nav-item {{request()->path()=='admin/feedbacks' ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('feedbacks.index')}}">
                     <i class="fas fa-envelope"></i>
                     <span>Xabarlar</span></a>
@@ -83,60 +96,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                      
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
+                      <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -181,21 +141,13 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                    <i class="fas fa-cog fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profilni sozlash
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Chiqish
                                 </a>
                             </div>
                         </li>
@@ -221,7 +173,7 @@
  <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span> &copy; Ultra soft 2021</span>
+                        <span> &copy; {{env('APP_NAME','Sayt')}} <script>document.write(new Date().getFullYear());</script></span>
                     </div>
                 </div>
             </footer>
@@ -244,15 +196,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Boshqaruvdan chiqasizmi?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Agar tizimdan chiqishni hohlasangiz "Ha" tugmasini bosing.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Bekor</button>
+                    <a class="btn btn-primary" href="login.html">Ha</a>
                 </div>
             </div>
         </div>

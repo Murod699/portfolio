@@ -1,4 +1,4 @@
-@extends('layouts/admin', ['title' => "Admin_qism"])
+@extends('layouts/admin')
 @section('content')
 
                     
@@ -19,7 +19,7 @@
                                             <th width="100px">Rasmi</th>
                                             <th>Nomi</th>
                                             <th>e-manzil</th>
-                                            <th width="280px">Amallar</th>
+                                            <th width="200px">Amallar</th>
                                             
                                         </tr>
                                     </thead>                                
@@ -31,12 +31,21 @@
                                             <td>{{$port->name}}</td>
                                             <td>{{$port->ssilka}}</td>
                                             <td>
-                                                <a class="btn btn-warning" href="{{route('ports.edit',  $port->id)}}"><i class="fa fa-edit"></i> O`zgartirish</a>
-                                                <form method="POST" action="{{route('ports.destroy', $port->id)}}">
-                                                    @csrf
-                                                    @method('Delete')
-                                                    <button class="btn btn-danger"><i class="fa fa-trash"></i> O`chirish</button>
-                                                </form>
+                                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                                    <a href="{{route('ports.edit',  $port->id)}}" class="btn btn-warning">
+                                                    <i class="fa fa-edit"></i>O'zgartirish</a>
+                                                   <div class="btn-group" role="group">
+                                                       <button id="btnGroupDrop1" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                       </button>
+                                                       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                           <form method="POST" action="{{route('ports.destroy', $port->id)}}">
+                                                               @csrf
+                                                               @method('Delete')
+                                                               <button class="dropdown-item" type="submit"><i class="fa fa-trash"></i>O`chirish</button>
+                                                           </form>
+                                                       </div>
+                                                   </div>
+                                                </div>
                                             </td>
                                             
                                         </tr>

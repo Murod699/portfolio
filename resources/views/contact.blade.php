@@ -43,7 +43,7 @@
 				</div>
 				<div class="col-md-1 col-sm-1"></div>
 				<div class="col-md-12 col-sm-12">
-					<p> &copy; 2021 Ultra Soft</p>
+					<p> &copy;  {{env('APP_NAME','Sayt')}} <script>document.write(new Date().getFullYear());</script></p>
 				</div>
 			</div>
 		</div>

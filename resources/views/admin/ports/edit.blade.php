@@ -1,4 +1,4 @@
-@extends('layouts/admin', ['title' => 'O`zgartirish'])
+@extends('layouts/admin')
 @section('content')
 <!-- Basic Card Example -->
 <div class="card shadow mb-4">

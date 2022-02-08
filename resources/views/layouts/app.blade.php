@@ -7,7 +7,7 @@
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 	<!-- SITE TITLE -->
-	<title>{{$title}}</title>
+	<title>{{env('APP_NAME', 'Sayt')}}</title>
 
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -33,7 +33,7 @@ https://templatemo.com/tm-464-ultra-profile
 					<span class="icon icon-bar"></span>
 					<span class="icon icon-bar"></span>
 				</button>
-				<a href="#" class="navbar-brand">Ultra Soft</a>
+				<a href="#{{route('index')}}" class="navbar-brand">{{env('APP_NAME', 'Sayt')}}</a>
 			</div>
 			<nav class="collapse navbar-collapse" id="rock-navigation">
 				<ul class="nav navbar-nav navbar-right main-navigation text-uppercase">

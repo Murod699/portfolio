@@ -1,4 +1,4 @@
-@extends('layouts/admin', ['title' => "portfilo qo`shish"])
+@extends('layouts/admin')
 
 @section('content')
 
