@@ -26,6 +26,6 @@ class FeedbacksController extends Controller
         $data = Feedback::findOrFail($id);
         $data->delete();
 
-        return redirect()->route('feedbacks.index')->with('success', 'Xabar o`chirildi!');
+        return redirect()->route('feedbacks.index')->with('delete', 'Xabar o`chirildi!');
     }
 }
