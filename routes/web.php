@@ -23,6 +23,8 @@ Route::prefix('admin')->group(function(){
 //Feedback routes
     Route::get('feedbacks', 'App\Http\Controllers\Admin\FeedbacksController@index')->name('feedbacks.index');
     Route::get('feedbacks/{id}/show', 'App\Http\Controllers\Admin\FeedbacksController@show')->name('feedbacks.show');
+    Route::delete('feedbacks/{id}', 'App\Http\Controllers\Admin\FeedbacksController@destroy')->name('feedbacks.destroy');
+
 
 });
 

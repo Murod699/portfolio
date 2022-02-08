@@ -29,7 +29,7 @@
                         <td><i class="fa fa-{{$item->status ? 'envelope-open' : 'envelope'}}"></i></td>
                         <td>
                             <a class="btn btn-primary" href="{{route('feedbacks.show', $item->id)}}"><i class="fa fa-eye"></i> ko`rish</a>
-                            <form method="POST" action="#">
+                            <form method="POST" action="{{route('feedbacks.destroy', $item->id)}}">
                                 @csrf
                                 @method('Delete')
                                 <button class="btn btn-danger"><i class="fa fa-trash"></i> O`chirish</button>
