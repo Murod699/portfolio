@@ -1,4 +1,4 @@
-@extends('layouts/app', ['title' => 'Home_page'])
+@extends('layouts/app')
 @section('content')
 	<!-- START HOME -->
 	<section id="home" class="templatemo-home">
@@ -66,78 +66,19 @@
 					<div class="iso-section">
 						<div class="iso-box-section">
 							<div class="iso-box-wrapper col4-iso-box">
-								<div class="iso-box html photoshop wordpress mobile col-md-3 col-sm-3 col-xs-12">
+								@foreach ($ports as $port)
+									
+								
+								<div class="iso-box  col-md-3 col-sm-3 col-xs-12">
 									<div class="portfolio-thumb">
-										<img src="images/portfolio-img1.jpg" class="fluid-img" alt="portfolio img">
+										<img src="{{'/storage/'.$port->thumb}}" class="fluid-img" alt="portfolio img">
 										<div class="portfolio-overlay">
-											<h3 class="portfolio-item-title">UX Design</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
+											<a href="{{$port->ssilka}}"><h3 class="portfolio-item-title">{{$port->name}}</h3></a>
+											{{-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p> --}}
 										</div>
 									</div>
 								</div>
-								<div class="iso-box html wordpress mobile col-md-3 col-sm-3 col-xs-12">
-									<div class="portfolio-thumb">
-										<img src="images/portfolio-img2.jpg" class="fluid-img" alt="portfolio img">
-										<div class="portfolio-overlay">
-											<h3 class="portfolio-item-title">UX Design</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-										</div>
-									</div>
-								</div>
-								<div class="iso-box wordpress col-md-3 col-sm-3 col-xs-12">
-									<div class="portfolio-thumb">
-										<img src="images/portfolio-img3.jpg" class="fluid-img" alt="portfolio img">
-										<div class="portfolio-overlay">
-											<h3 class="portfolio-item-title">UX Design</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-										</div>
-									</div>
-								</div>
-								<div class="iso-box html mobile col-md-3 col-sm-3 col-xs-12">
-									<div class="portfolio-thumb">
-										<img src="images/portfolio-img4.jpg" class="fluid-img" alt="portfolio img">
-										<div class="portfolio-overlay">
-											<h3 class="portfolio-item-title">UX Design</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-										</div>
-									</div>
-								</div>
-								<div class="iso-box wordpress col-md-3 col-sm-3 col-xs-12">
-									<div class="portfolio-thumb">
-										<img src="images/portfolio-img5.jpg" class="fluid-img" alt="portfolio img">
-										<div class="portfolio-overlay">
-											<h3 class="portfolio-item-title">UX Design</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-										</div>
-									</div>
-								</div>
-								<div class="iso-box html photoshop col-md-3 col-sm-3 col-xs-12">
-									<div class="portfolio-thumb">
-										<img src="images/portfolio-img6.jpg" class="fluid-img" alt="portfolio img">
-										<div class="portfolio-overlay">
-											<h3 class="portfolio-item-title">UX Design</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-										</div>
-									</div>
-								</div>
-								<div class="iso-box photoshop col-md-3 col-sm-3 col-xs-12">
-									<div class="portfolio-thumb">
-										<img src="images/portfolio-img7.jpg" class="fluid-img" alt="portfolio img">
-										<div class="portfolio-overlay">
-											<h3 class="portfolio-item-title">UX Design</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-										</div>
-									</div>
-								</div>
-								<div class="iso-box wordpress col-md-3 col-sm-3 col-xs-12">
-									<div class="portfolio-thumb">
-										<img src="images/portfolio-img8.jpg" class="fluid-img" alt="portfolio img">
-										<div class="portfolio-overlay">
-											<h3 class="portfolio-item-title">UX Design</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-										</div>
-									</div>
-								</div>
+								@endforeach
 							</div>
 						</div>
 					</div>
