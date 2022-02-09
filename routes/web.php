@@ -18,7 +18,10 @@ Route::get('/', 'App\Http\Controllers\SiteController@index')->name('index');
 Route::post('/', 'App\Http\Controllers\SiteController@feedbackStore')->name('contact.store');
 
 // Admin routes
-Route::prefix('admin')->group(function(){
+Route::middleware('auth')->prefix('admin')->group(function(){
+    Route::get('/', function(){
+        return redirect()->route('ports.index');
+    });
     Route::resource('/ports', 'App\Http\Controllers\Admin\PortController');
 //Feedback routes
     Route::get('feedbacks', 'App\Http\Controllers\Admin\FeedbacksController@index')->name('feedbacks.index');
@@ -29,3 +32,7 @@ Route::prefix('admin')->group(function(){
 });
 
 
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

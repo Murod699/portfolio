@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts/app', ['title' => 'MuroDev.uz - Asosiy'])
 @section('content')
 	<!-- START HOME -->
 	<section id="home" class="templatemo-home">

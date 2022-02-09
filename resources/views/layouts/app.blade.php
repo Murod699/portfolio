@@ -7,7 +7,7 @@
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 	<!-- SITE TITLE -->
-	<title>{{env('APP_NAME', 'Sayt')}}</title>
+	<title>{{$title}}</title>
 
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
