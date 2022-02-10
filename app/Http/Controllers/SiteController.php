@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Feedback;
 use App\Models\Port;
-
+use App\Services\SendTelegramService;
 class SiteController extends Controller
 {
     public function index(){
@@ -17,16 +17,25 @@ class SiteController extends Controller
 
     public function feedbackStore(Request $request){
 
-        $request -> validate([
+       $data = $request -> validate([
             'name' => 'required|min:3',
             'phone' => 'required|min:9|max:9',
             'message' => 'required|max:2048'
         ]);
+        //Formatting
+
+        $message = 'F.I.O: '.$data['name'].PHP_EOL;
+        $message.= 'Telefon: '.$data['phone'].PHP_EOL;
+        $message.= 'Xabar matni: '.$data['message'];
+
+        //Send to telegram
+
+        SendTelegramService::send($message);
 
         Feedback::create([
-            'name' => $request->post('name'),
-            'phone' => $request->post('phone'),
-            'message' => $request->post('message')
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'message' => $data['message']
         ]);
 
         return redirect()->route('index')->with('success', 'Xabaringgiz uchun rahmat tez orada javob qaytaramiz!');
