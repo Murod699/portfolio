@@ -10,6 +10,7 @@
 	<title>{{$title}}</title>
 
 	<!-- STYLESHEETS -->
+	<link rel="icon" href="{{asset('dashboard/img/md.ico')}}" type="image/icon type">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/templatemo-style.css">

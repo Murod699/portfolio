@@ -73,7 +73,7 @@
 									<div class="portfolio-thumb">
 										<img src="{{'/storage/'.$port->thumb}}" class="fluid-img" alt="portfolio img">
 										<div class="portfolio-overlay">
-											<a href="{{$port->ssilka}}"><h3 class="portfolio-item-title">{{$port->name}}</h3></a>
+											<a target="_blank" href="{{$port->ssilka}}"><h3 class="portfolio-item-title">{{$port->name}}</h3></a>
 											{{-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p> --}}
 										</div>
 									</div>

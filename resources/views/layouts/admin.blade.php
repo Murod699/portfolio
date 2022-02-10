@@ -16,6 +16,7 @@
     <title>{{env('APP_NAME', 'Sayt')}} - Boshqaruv paneli</title>
 
     <!-- Custom fonts for this template-->
+    <link rel="icon" href="{{asset('dashboard/img/md.ico')}}" type="image/icon type">
     <link href="/dashboard/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -36,9 +37,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('ports.index')}}">
                 <div class="sidebar-brand-icon">
-                    <i class="fa fa-home">
-
-                    </i>
+                    <i class="fa fa-home"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">{{env('APP_NAME', 'Sayt')}}</div>
             </a>
