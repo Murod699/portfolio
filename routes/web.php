@@ -23,6 +23,11 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         return redirect()->route('ports.index');
     });
     Route::resource('/ports', 'App\Http\Controllers\Admin\PortController');
+// Profile routes
+    Route::get('/profile', 'App\Http\Controllers\Admin\ProfileController@index')->name('profile.index');
+    Route::put('/profile/update', 'App\Http\Controllers\Admin\ProfileController@update')->name('profile.update');
+    Route::put('/profile/password', 'App\Http\Controllers\Admin\ProfileController@password')->name('profile.password');
+
 //Feedback routes
     Route::get('feedbacks', 'App\Http\Controllers\Admin\FeedbacksController@index')->name('feedbacks.index');
     Route::get('feedbacks/{id}/show', 'App\Http\Controllers\Admin\FeedbacksController@show')->name('feedbacks.show');
