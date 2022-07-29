@@ -19,7 +19,7 @@ class SiteController extends Controller
 
        $data = $request -> validate([
             'name' => 'required|min:3',
-            'phone' => 'required|numeric|min:9|max:9',
+            'phone' => 'required|integer|digits_between:0,9',
             'message' => 'required|max:2048'
         ]);
         //Formatting
