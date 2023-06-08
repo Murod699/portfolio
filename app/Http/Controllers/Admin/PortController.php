@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
- 
+use App\Http\Requests\PortStoreRequest;
 use Illuminate\Http\Request;
 
 use App\Models\Port;
-
+use Illuminate\Support\Facades\Storage;
 use Image;
 
 class PortController extends Controller
@@ -21,9 +21,9 @@ class PortController extends Controller
     {
         $ports = Port::latest()->paginate(3);
 
-        
 
-        
+
+
 
         return view('admin.ports.index', compact('ports'));
     }
@@ -44,14 +44,8 @@ class PortController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PortStoreRequest $request)
     {
-        //validation rules
-        $request->validate([
-            'name' => 'required|min:3',
-            'ssilka' => 'required|min:3',
-            'img' => 'required|file|mimes:jpg,png,jpeg'
-        ]);
 
         //Upload image to storage
 
